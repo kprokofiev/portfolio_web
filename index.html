@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Кирилл Прокофьев — Портфолио CorpDev/M&A</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --bg:#ffffff; --fg:#111827; --fg-2:#6B7280; --line:#E5E7EB; --primary:#2563EB;
+      --ok:#059669; --warn:#D97706; --muted:#64748B; --card:#ffffff; --shadow:0 6px 24px rgba(17,24,39,.06);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0B1220; --fg:#E6EAF2; --fg-2:#9AA3B2; --line:#1F2A44; --card:#0F172A; --shadow:0 8px 28px rgba(0,0,0,.35); --primary:#3B82F6; }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 Inter,Segoe UI,Roboto,system-ui,Arial,sans-serif}
+    a{color:var(--primary);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:8px 0 24px;border-bottom:1px solid var(--line)}
+    .id{display:flex;gap:16px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#cbd5e1,transparent)}
+    h1{font-size:28px;line-height:1.2;margin:0}
+    .role{color:var(--fg-2)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+    .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
+    .btn.icon svg{width:18px;height:18px}
+
+    .section{padding:28px 0}
+    .section h2{font-size:20px;margin:0 0 16px}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 6;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px;transition:transform .08s ease}
+    .card:hover{transform:translateY(-2px)}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .meta{color:var(--fg-2);font-size:14px}
+    .pill{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:transparent;margin-right:6px}
+
+    .list{display:grid;gap:10px}
+
+    footer{margin-top:24px;padding:16px 0;border-top:1px solid var(--line);color:var(--fg-2);font-size:14px}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;display:none;place-items:center;padding:24px;background:color-mix(in srgb, var(--bg) 70%, rgba(0,0,0,.4) 30%)}
+    .modal[open]{display:grid}
+    .sheet{width:min(960px,100%);max-height:90vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+    .sheet header{position:sticky;top:0;z-index:2;background:var(--card);padding:16px 20px;border-bottom:1px solid var(--line)}
+    .sheet .content{padding:18px 20px}
+    .close{margin-left:auto;border:none;background:transparent;color:var(--fg-2);font-size:28px;line-height:1;cursor:pointer}
+
+    .row{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .col-6{grid-column:span 6}
+    .col-12{grid-column:span 12}
+    .kv{display:grid;grid-template-columns:160px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+    .kv .k{color:var(--fg-2)}
+    .bullets{margin:0;padding-left:18px}
+    .artifacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+    .tag{font-size:12px;border:1px solid var(--line);padding:6px 10px;border-radius:10px;background:transparent}
+    .status{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;color:#fff}
+    .status.ok{background:var(--ok)}
+    .status.warn{background:var(--warn)}
+    .status.neutral{background:var(--muted)}
+
+    @media (max-width:800px){
+      .card{grid-column:span 12}
+      .row{grid-template-columns:1fr}
+      .kv{grid-template-columns:1fr}
+      header{gap:12px}
+    }
+
+    /* Print */
+    @media print{
+      header,.actions,.modal{display:none !important}
+      .card{break-inside:avoid}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="id">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <h1>Кирилл Прокофьев</h1>
+          <div class="role">Стажёр / ассистент по корпоративному развитию и M&A · Москва</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="mailto:k.prokof@mail.ru">k.prokof@mail.ru</a>
+        <a class="btn" href="tel:+79152180638">+7 (915) 218‑06‑38</a>
+        <a class="btn icon" href="#" title="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.2 15.6 8.9 19c.4 0 .6-.2.8-.4l2-1.9 4.2 3.1c.8.4 1.3.2 1.5-.7l2.7-12.8c.2-1-.4-1.4-1.2-1.1L3.7 9.6c-1 .4-1 1 0 1.3l4 1.3 9.2-5.7c.4-.3.8-.1.5.2L9.2 15.6z"/></svg>
+          @washedpeak
+        </a>
+        <a class="btn" href="#" target="_blank">Скачать резюме (RU)</a>
+        <a class="btn" href="#" target="_blank">Resume (EN)</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Краткий профиль</h2>
+      <p class="meta">Моделирование (3‑отчётная, DCF, мультипликаторы), материалы сделки (тизер/CIM, КП, LOI/term sheet), участие в подготовке DD и структуре дата‑рума. В бизнес‑развитии: от discovery до КП/предсогласования, фиксация KPI/SLA и рисков. Английский C1.</p>
+    </section>
+
+    <section class="section">
+      <h2>Кейсы</h2>
+      <div class="grid">
+        <!-- Card: PharmTech -->
+        <article class="card" data-open="case-pharm" role="button" tabindex="0" aria-label="Открыть кейс: PharmTech">
+          <h3>Проект B — PharmTech (PoC/внедрение)</h3>
+          <div class="meta">Роль: поддержка корпоративного развития · 2025</div>
+          <div style="margin:10px 0 6px">
+            <span class="pill">Стадия: scoping / pre‑approval</span>
+            <span class="pill">Размер: ~5 млн ₽ · источник: ориентир клиента</span>
+            <span class="pill">Статус: в работе</span>
+          </div>
+          <div class="list">
+            <div>Discovery → draft scope/KPI/SLA; чек‑лист рисков; оглавление дата‑рума.</div>
+            <div class="meta">Кликни, чтобы открыть <b>Case Sheet</b></div>
+          </div>
+        </article>
+        <!-- Card: EdTech -->
+        <article class="card" data-open="case-edtech" role="button" tabindex="0" aria-label="Открыть кейс: EdTech">
+          <h3>Проект A — EdTech (B2B, pre‑sales)</h3>
+          <div class="meta">Роль: поддержка сделки · 2025</div>
+          <div style="margin:10px 0 6px">
+            <span class="pill">Стадия: post‑КП</span>
+            <span class="pill">Размер: ~6 млн ₽ · источник: КП</span>
+            <span class="pill">Статус: приостановлено клиентом</span>
+          </div>
+          <div class="list">
+            <div>3‑отчётная модель + чувствительность; тизер 7 слайдов; защита КП.</div>
+            <div class="meta">Кликни, чтобы открыть <b>Case Sheet</b></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>Дисклеймер: суммы указаны по КП и/или ориентирам клиента; не равны подписанным договорам без явной пометки «закрыто».</div>
+      <div>Обновлено: 25.08.2025</div>
+    </footer>
+  </div>
+
+  <!-- Modal: PharmTech -->
+  <dialog class="modal" id="case-pharm" aria-modal="true" aria-labelledby="pharm-title">
+    <div class="sheet" role="document">
+      <header>
+        <h3 id="pharm-title" style="margin:0;font-size:20px">Case Sheet — PharmTech (PoC/внедрение)</h3>
+        <button class="close" data-close aria-label="Закрыть">×</button>
+      </header>
+      <div class="content">
+        <div class="row">
+          <div class="col-6">
+            <div class="kv"><div class="k">Роль</div><div>Поддержка корпоративного развития</div></div>
+            <div class="kv"><div class="k">Стадия</div><div>Scoping / Pre‑approval</div></div>
+            <div class="kv"><div class="k">Размер</div><div>~5 млн ₽ <span class="tag">источник: ориентир клиента</span></div></div>
+          </div>
+          <div class="col-6">
+            <div class="kv"><div class="k">Статус</div><div><span class="status neutral">В работе</span></div></div>
+            <div class="kv"><div class="k">Период</div><div>2025</div></div>
+            <div class="kv"><div class="k">Отрасль</div><div>PharmTech / B2B</div></div>
+          </div>
+          <div class="col-12">
+            <h4>Суть и мой вклад</h4>
+            <ul class="bullets">
+              <li>Discovery → draft scope, KPI/SLA; согласование границ проекта.</li>
+              <li>Чек‑лист рисков (фин/право/налоги/операции/ИТ/ИС/регуляторика).</li>
+              <li>Оглавление виртуального дата‑рума (структура папок, правила версий/доступа).</li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <h4>Артефакты</h4>
+            <div class="artifacts">
+              <a class="btn" href="#" target="_blank">DD‑чек‑лист (таблица)</a>
+              <a class="btn" href="#" target="_blank">Оглавление VDR (PDF/MD)</a>
+              <a class="btn" href="#" target="_blank">Draft scope + KPI/SLA (PDF)</a>
+            </div>
+          </div>
+          <div class="col-6">
+            <h4>Риски и меры</h4>
+            <ul class="bullets">
+              <li>Регуляторные сроки — буфер в план‑графике; ранняя валидация.</li>
+              <li>Доступ к данным — роли/права в VDR, анонимизация.</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h4>Следующий шаг</h4>
+            <ul class="bullets">
+              <li>Фиксация критериев go/no‑go и подготовка LOI.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Modal: EdTech -->
+  <dialog class="modal" id="case-edtech" aria-modal="true" aria-labelledby="edtech-title">
+    <div class="sheet" role="document">
+      <header>
+        <h3 id="edtech-title" style="margin:0;font-size:20px">Case Sheet — EdTech (B2B, pre‑sales)</h3>
+        <button class="close" data-close aria-label="Закрыть">×</button>
+      </header>
+      <div class="content">
+        <div class="row">
+          <div class="col-6">
+            <div class="kv"><div class="k">Роль</div><div>Поддержка сделки</div></div>
+            <div class="kv"><div class="k">Стадия</div><div>Post‑КП</div></div>
+            <div class="kv"><div class="k">Размер</div><div>~6 млн ₽ <span class="tag">источник: КП</span></div></div>
+          </div>
+          <div class="col-6">
+            <div class="kv"><div class="k">Статус</div><div><span class="status warn">Приостановлено клиентом</span></div></div>
+            <div class="kv"><div class="k">Период</div><div>2025</div></div>
+            <div class="kv"><div class="k">Отрасль</div><div>EdTech / B2B</div></div>
+          </div>
+          <div class="col-12">
+            <h4>Суть и мой вклад</h4>
+            <ul class="bullets">
+              <li>Трёхотчётная модель с драйверами выручки/маржи и чувствительностью.</li>
+              <li>Тизер (7 слайдов) и защита материалов на встрече.</li>
+              <li>Фиксация стадий/рисков; рекомендации по phased roll‑out.</li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <h4>Артефакты</h4>
+            <div class="artifacts">
+              <a class="btn" href="#" target="_blank">Модель (.xlsx, просмотр)</a>
+              <a class="btn" href="#" target="_blank">Тизер (PDF)</a>
+              <a class="btn" href="#" target="_blank">КП (PDF/скрин)</a>
+            </div>
+          </div>
+          <div class="col-6">
+            <h4>Риски и меры</h4>
+            <ul class="bullets">
+              <li>Смещение приоритетов клиента — альтернативный поэтапный запуск.</li>
+              <li>Неопределённость бюджета — сценарии и коридоры оценок.</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h4>Следующий шаг</h4>
+            <ul class="bullets">
+              <li>Повторный дискавери на узкий пилот; обновление модели/тизера.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    // Open/close modals by data-open attribute or hash
+    const openers = document.querySelectorAll('[data-open]');
+    const modals = new Map([
+      ['case-pharm', document.getElementById('case-pharm')],
+      ['case-edtech', document.getElementById('case-edtech')],
+    ]);
+
+    function openModal(id){ const m = modals.get(id); if(!m) return; m.showModal(); m.querySelector('[data-close]')?.focus(); location.hash = id; }
+    function closeModal(m){ m.close(); if(location.hash) history.replaceState(null, '', ' '); }
+
+    openers.forEach(el=>{
+      const id = el.getAttribute('data-open');
+      el.addEventListener('click', ()=>openModal(id));
+      el.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); openModal(id); } });
+    });
+
+    document.querySelectorAll('[data-close]').forEach(btn=>{
+      btn.addEventListener('click', ()=> closeModal(btn.closest('.modal')));
+    });
+
+    window.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape') document.querySelectorAll('.modal[open]')?.forEach(m=>closeModal(m));
+    });
+
+    // Deep-link via hash
+    window.addEventListener('load', ()=>{
+      const id = location.hash?.replace('#','');
+      if(modals.has(id)) openModal(id);
+    });
+  </script>
+</body>
+</html>
